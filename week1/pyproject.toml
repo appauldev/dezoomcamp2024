@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "week1"
+version = "0.1.0"
+description = "Week 1 project files for the Data Engineering Zoomcamp"
+authors = ["appauldev <appauldev+git@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pandas = "^2.2.0"
+pyarrow = "^15.0.0"
+requests = "^2.31.0"
+sqlalchemy = "^2.0.25"
+psycopg2 = "^2.9.9"
+
+
+[tool.poetry.group.dev.dependencies]
+pgcli = "^4.0.1"
+ipykernel = "^6.29.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
