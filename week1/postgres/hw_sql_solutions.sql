@@ -7,6 +7,7 @@ SELECT COUNT(*)
 FROM green_taxi_data
 WHERE
     to_char(lpep_pickup_datetime, 'YYYY-MM-DD') = '2019-09-18'
+    AND to_char(lpep_dropoff_datetime, 'YYYY-MM-DD') = '2019-09-18' -- forgot to add this condition
 
 /*markdown
 ### #4 Largest trip for each day
@@ -20,10 +21,7 @@ LIMIT 1;
 
 /*markdown
 ### #5 Three biggest pick up Boroughs
-
 */
-
--- SELECT * FROM green_taxi_data;
 
 SELECT
     tzlookup.borough,
@@ -55,7 +53,6 @@ WITH pickup_astoria_sept_2019 AS (
         green_taxi_data.lpep_pickup_datetime < '2019-09-30'
     ORDER BY green_taxi_data.tip_amount DESC
 )
-
 SELECT
     tzlookup.zone,
     pickup_astoria_sept_2019.tip

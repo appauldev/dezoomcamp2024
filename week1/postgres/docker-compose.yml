@@ -2,18 +2,20 @@ services:
   postgres:
     image: postgres:latest
     environment:
-      POSTGRES_USER: airflow
-      POSTGRES_PASSWORD: airflow
-      POSTGRES_DB: airflow
+      - POSTGRES_USER=airflow
+      - POSTGRES_PASSWORD=airflow
+      - POSTGRES_DB=airflow
     volumes:
-      - "pg-db-volume: /var/lib/postgresql/data"
-    healthcheck:
-      test: ["CMD", "pg_isready", "-U", "airflow"]
-      interval: 10s
-      timeout: 30s
-      retries: 5
-      start_period: 30s
-    restart: always
+      - "./ny_taxi_pg_data:/var/lib/postgresql/data:rw"
+    ports:
+      - "5432:5432"
+    # healthcheck:
+    #   test: ["CMD", "pg_isready", "-U", "airflow"]
+    #   interval: 10s
+    #   timeout: 30s
+    #   retries: 5
+    #   start_period: 30s
+    # restart: always
 
 # docker run -it \
 #   -e POSTGRES_USER="root" \
